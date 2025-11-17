@@ -31,8 +31,8 @@ export const createFarmer = async (farmerData) => {
   `;
 
     const values = [
-      businessName, // maps to businessname
-      ownerName, // maps to owner_name
+      businessName,
+      ownerName,
       email,
       phone || null,
       city,

@@ -257,7 +257,7 @@ function ProductCard({ product }) {
   const imageUrl = imgVal
     ? imgVal.startsWith("http")
       ? imgVal
-      : `http://localhost:5000/${imgVal.replace(/^\//, "")}`
+      : `${process.env.NEXT_PUBLIC_API_URL}/${imgVal.replace(/^\//, "")}`
     : null;
 
   return (
@@ -309,7 +309,7 @@ function FeaturedProducts() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/products")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setProducts(data);
@@ -365,7 +365,7 @@ function Testimonials() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/testimonials")
+    fetch("${process.env.NEXT_PUBLIC_API_URL}/testimonials")
       .then((res) => res.json())
       .then((data) => setTestimonials(data))
       .catch((err) => console.error(err))

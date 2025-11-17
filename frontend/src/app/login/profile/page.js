@@ -21,7 +21,9 @@ export default function ProfilePage() {
 
   const fetchOrders = async (userId) => {
     try {
-      const res = await fetch(`http://localhost:5000/orders/user/${userId}`);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/orders/user/${userId}`
+      );
       const data = await res.json();
       setOrders(data);
     } catch (error) {

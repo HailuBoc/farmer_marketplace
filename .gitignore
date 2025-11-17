@@ -1,1 +1,43 @@
+# Node
 node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Next.js
+.next/
+out/
+build/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Env / Secrets
+.env
+.env.*.local
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+
+# Misc
+coverage/
+dist/
+.cache/
+.vite/
+
+# Optional: local database / sqlite
+*.sqlite
+*.sqlite3

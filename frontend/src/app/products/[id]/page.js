@@ -262,7 +262,7 @@ function Footer() {
   );
 }
 
-/* Product Detail Page */
+/* Product  Page */
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -273,7 +273,7 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Product not found");
         return res.json();
@@ -327,7 +327,8 @@ export default function ProductDetailPage() {
   const imgUrl =
     product.image && typeof product.image === "string"
       ? product.image
-      : product.image?.url || `http://localhost:5000/${product.image?.path}`;
+      : product.image?.url ||
+        `${process.env.NEXT_PUBLIC_API_URL}/${product.image?.path}`;
 
   return (
     <div className="antialiased text-gray-800">
@@ -354,7 +355,10 @@ export default function ProductDetailPage() {
                 const imageUrl = imgVal
                   ? imgVal.startsWith("http")
                     ? imgVal
-                    : `http://localhost:5000/${imgVal.replace(/^\//, "")}`
+                    : `${process.env.NEXT_PUBLIC_API_URL}/${imgVal.replace(
+                        /^\//,
+                        ""
+                      )}`
                   : null;
 
                 if (!imageUrl)

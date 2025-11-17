@@ -29,7 +29,7 @@ const CATEGORY_OPTIONS = [
   "Value-Added Goods",
 ];
 
-const APPLY_ENDPOINT = "/api/farmers/apply-to-sell";
+const APPLY_ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/api/farmers/apply-to-sell`;
 
 const SellApplicationPage = () => {
   const [form, setForm] = useState(INITIAL_FORM);
@@ -77,8 +77,10 @@ const SellApplicationPage = () => {
   const validateForm = (values) => {
     const nextErrors = {};
 
-    if (!values.fullName?.trim()) nextErrors.fullName = "Full name is required.";
-    if (!values.farmName?.trim()) nextErrors.farmName = "Farm name is required.";
+    if (!values.fullName?.trim())
+      nextErrors.fullName = "Full name is required.";
+    if (!values.farmName?.trim())
+      nextErrors.farmName = "Farm name is required.";
 
     if (!values.email?.trim()) {
       nextErrors.email = "Email is required.";
@@ -90,8 +92,7 @@ const SellApplicationPage = () => {
       nextErrors.phone = "Phone number is required.";
     }
 
-    if (!values.location?.trim())
-      nextErrors.location = "Location is required.";
+    if (!values.location?.trim()) nextErrors.location = "Location is required.";
 
     if (!values.productCategories.length) {
       nextErrors.productCategories = "Select at least one category.";
@@ -432,4 +433,3 @@ const ErrorMessage = ({ message }) => (
 );
 
 export default SellApplicationPage;
-

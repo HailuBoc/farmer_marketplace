@@ -266,7 +266,7 @@ function ProductCard({ product }) {
   const imageUrl = imgVal
     ? imgVal.startsWith("http")
       ? imgVal
-      : `http://localhost:5000/${imgVal.replace(/^\//, "")}`
+      : `${process.env.NEXT_PUBLIC_API_URL}/${imgVal.replace(/^\//, "")}`
     : null;
 
   return (
@@ -314,7 +314,7 @@ export default function ProductsPage() {
   const [category, setCategory] = useState("All");
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
       .then((res) => res.json())
       .then((data) =>
         setProducts(data.map((p) => ({ ...p, price: Number(p.price) })))
