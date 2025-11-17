@@ -1,0 +1,31 @@
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import path from "path";
+
+import productRoutes from "./routes/productRoutes.js";
+import testimonialRoutes from "./routes/testimonialRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import farmerRoutes from "./routes/farmerRoutes.js";
+
+const app = express();
+dotenv.config();
+app.use(cors());
+
+const __dirname = path.resolve(); // required for ES modules
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use(express.json({ limit: "10mb" })); // allow base64 images
+
+app.use("/products", productRoutes);
+app.use("/testimonials", testimonialRoutes);
+app.use("/api/users", userRoutes);
+
+app.use("/farmers", farmerRoutes);
+
+app.get("/", (req, res) => {
+  res.send("LocalFarm API running...");
+});
+app.listen(5000, () => {
+  console.log("server is running on port 5000");
+});
