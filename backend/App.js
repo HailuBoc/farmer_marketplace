@@ -10,7 +10,16 @@ import farmerRoutes from "./routes/farmerRoutes.js";
 
 const app = express();
 dotenv.config();
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://farmer-marketplace-kappa.vercel.app", // ← FIXED
+      "https://farmer-marketplace-skir.onrender.com", // ← Add your backend
+    ],
+    credentials: true,
+  })
+);
 
 const __dirname = path.resolve(); // required for ES modules
 
