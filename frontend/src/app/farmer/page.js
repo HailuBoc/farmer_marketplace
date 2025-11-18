@@ -220,6 +220,7 @@ export default function FarmerPage() {
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState(null); // {type:'success'|'error', text}
   const fileRef = useRef(null);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (!photoFile) return;
@@ -286,7 +287,7 @@ export default function FarmerPage() {
     };
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/farmers`, {
+      const res = await fetch(`${API_URL}/farmers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

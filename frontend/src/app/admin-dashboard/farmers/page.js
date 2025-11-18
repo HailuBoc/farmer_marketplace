@@ -5,11 +5,11 @@ export default function FarmersPage() {
   const [farmers, setFarmers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("http://localhost:5000/farmers", {
+        const res = await fetch(`${API_URL}/farmers`, {
           cache: "no-store",
         });
         if (!res.ok) throw new Error("Failed to fetch farmers");

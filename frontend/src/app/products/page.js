@@ -262,11 +262,12 @@ function ProductCard({ product }) {
   else if (product.image && typeof product.image === "object")
     imgVal =
       product.image.url || product.image.path || product.image.filename || null;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const imageUrl = imgVal
     ? imgVal.startsWith("http")
       ? imgVal
-      : `${process.env.NEXT_PUBLIC_API_URL}/${imgVal.replace(/^\//, "")}`
+      : `${API_URL}/${imgVal.replace(/^\//, "")}`
     : null;
 
   return (
@@ -312,9 +313,10 @@ export default function ProductsPage() {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+    fetch(`${API_URL}/products`)
       .then((res) => res.json())
       .then((data) =>
         setProducts(data.map((p) => ({ ...p, price: Number(p.price) })))

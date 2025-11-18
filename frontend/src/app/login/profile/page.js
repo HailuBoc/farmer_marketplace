@@ -7,6 +7,7 @@ import { User, ShoppingBag, LogOut, MapPin, Mail, Phone } from "lucide-react";
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -21,9 +22,7 @@ export default function ProfilePage() {
 
   const fetchOrders = async (userId) => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/orders/user/${userId}`
-      );
+      const res = await fetch(`${API_URL}/orders/user/${userId}`);
       const data = await res.json();
       setOrders(data);
     } catch (error) {

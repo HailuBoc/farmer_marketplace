@@ -7,6 +7,7 @@ export default function ProductsPage() {
   const [error, setError] = useState("");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const [form, setForm] = useState({
     name: "",
     category: "",
@@ -22,7 +23,7 @@ export default function ProductsPage() {
   async function loadProducts() {
     try {
       setIsLoading(true);
-      const res = await fetch("http://localhost:5000/products", {
+      const res = await fetch(`${API_URL}/products`, {
         cache: "no-store",
       });
       if (!res.ok) throw new Error("Failed to fetch products");
@@ -49,8 +50,8 @@ export default function ProductsPage() {
     try {
       const method = editingProduct ? "PUT" : "POST";
       const url = editingProduct
-        ? `http://localhost:5000/products/${editingProduct.id}`
-        : "http://localhost:5000/products";
+        ? `${API_URL}/products/${editingProduct.id}`
+        : `${API_URL}/products`;
 
       const formData = new FormData();
       formData.append("name", form.name);
@@ -75,7 +76,7 @@ export default function ProductsPage() {
   async function handleDelete(id) {
     if (!confirm("Are you sure you want to delete this product?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/products/${id}`, {
+      const res = await fetch(`${API_URL}/products/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete");
@@ -87,7 +88,7 @@ export default function ProductsPage() {
 
   async function handleApprove(id) {
     try {
-      const res = await fetch(`http://localhost:5000/products/${id}/approve`, {
+      const res = await fetch(`${API_URL}/products/${id}/approve`, {
         method: "PATCH",
       });
       if (!res.ok) throw new Error("Failed to approve product");

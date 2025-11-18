@@ -328,8 +328,7 @@ export default function ProductDetailPage() {
   const imgUrl =
     product.image && typeof product.image === "string"
       ? product.image
-      : product.image?.url ||
-        `${process.env.NEXT_PUBLIC_API_URL}/${product.image?.path}`;
+      : product.image?.url || `${API_URL}/${product.image?.path}`;
 
   return (
     <div className="antialiased text-gray-800">

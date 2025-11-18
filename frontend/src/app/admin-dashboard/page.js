@@ -9,7 +9,7 @@ export default function AdminDashboardPage() {
   const [error, setError] = useState("");
   const [products, setProducts] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
-
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   useEffect(() => {
     let isMounted = true;
     async function loadData() {
@@ -17,7 +17,7 @@ export default function AdminDashboardPage() {
       setError("");
       try {
         const [productsRes, testimonialsRes] = await Promise.all([
-          fetch("http://localhost:5000/products", { cache: "no-store" }),
+          fetch(`${API_URL}/products`, { cache: "no-store" }),
           fetch("http://localhost:5000/testimonials", { cache: "no-store" }),
         ]);
         if (!productsRes.ok) {
