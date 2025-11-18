@@ -13,7 +13,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "your-backend.onrender.com", // ← UPDATE THIS
+        hostname: "https://farmer-marketplace-skir.onrender.com", // ← UPDATE THIS
       },
     ],
   },
