@@ -9,7 +9,9 @@ import userRoutes from "./routes/userRoutes.js";
 import farmerRoutes from "./routes/farmerRoutes.js";
 
 const app = express();
+
 dotenv.config();
+const PORT = process.env.PORT || 5000;
 app.use(
   cors({
     origin: [
@@ -35,6 +37,8 @@ app.use("/farmers", farmerRoutes);
 app.get("/", (req, res) => {
   res.send("LocalFarm API running...");
 });
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log("server is running on port 5000");
 });
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000;

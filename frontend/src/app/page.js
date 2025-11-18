@@ -309,7 +309,7 @@ function FeaturedProducts() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/products")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setProducts(data);
@@ -365,7 +365,7 @@ function Testimonials() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/testimonials")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/testimonials`)
       .then((res) => res.json())
       .then((data) => setTestimonials(data))
       .catch((err) => console.error(err))
