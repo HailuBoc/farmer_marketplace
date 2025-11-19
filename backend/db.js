@@ -7,4 +7,8 @@ export const pool = new Pool({
   database: process.env.DB_NAME || "farmers_marketplace",
   password: process.env.DB_PASS || "Hailkasa#35",
   port: process.env.DB_PORT || 5432,
+  ssl:
+    process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : false,
 });
