@@ -40,5 +40,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log("server is running on port 5000");
 });
-server.keepAliveTimeout = 120000; // 120 seconds
-server.headersTimeout = 120000;
