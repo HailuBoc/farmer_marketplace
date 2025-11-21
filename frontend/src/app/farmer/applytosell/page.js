@@ -30,7 +30,7 @@ const CATEGORY_OPTIONS = [
 ];
 
 const APPLY_ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/api/farmers/apply-to-sell`;
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const SellApplicationPage = () => {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
@@ -127,7 +127,7 @@ const SellApplicationPage = () => {
     }
 
     try {
-      const response = await fetch(APPLY_ENDPOINT, {
+      const response = await fetch(`${API_URL}/api/farmers/apply-to-sell`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
