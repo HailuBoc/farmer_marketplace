@@ -308,7 +308,9 @@ function FeaturedProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_URL ||
+    "https://farmer-marketplace-1.onrender.com";
   useEffect(() => {
     console.log("API URL:", baseUrl);
 
