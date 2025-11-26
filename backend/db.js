@@ -1,8 +1,6 @@
 // db.js
 import pkg from "pg";
 const { Pool } = pkg;
-import dotenv from "dotenv";
-dotenv.config();
 
 export const pool = new Pool({
   user: process.env.DB_USER || "farmers_marketplace_database_user",
@@ -15,11 +13,7 @@ export const pool = new Pool({
       ? { rejectUnauthorized: false }
       : false,
 });
-console.log(process.env.DB_USER);
-console.log(process.env.DB_HOST);
-console.log(process.env.DB_DB_NAME);
-console.log(process.env.DB_PASS);
-console.log(process.env.DB_PORT);
+
 // Optional: test the connection when the server starts
 pool
   .connect()
