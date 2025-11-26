@@ -8,7 +8,10 @@ export const pool = new Pool({
   database: process.env.DB_NAME || "farmers_marketplace",
   password: process.env.DB_PASS || "Hailkasa#35",
   port: Number(process.env.DB_PORT) || 5432,
-  ssl: { rejectUnauthorized: false },
+  ssl:
+    process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : false,
 });
 
 // Optional: test the connection when the server starts
